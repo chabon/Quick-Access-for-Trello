@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Trello</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+    <div id="tabcontrol">
+        <!-- <span class="tabcontrolItemFade"></span>  -->
+        <span class="tabcontrolItem selected">Board</span>
+        <span class="tabcontrolItem">Add</span>
+        <!-- <span class="tabcontrolItem">Page</span>  -->
+    </div>
+    <div id="tabcontrolLine"></div>
+    <div id="tabbody">
+        <!-- board -->
+        <div class="tabpage selected">
+            <p class="boardListHeader">Starred</p>
+            <div class="boardList" id="starredBoardList">
+                <!-- <div class="boardItem"> -->
+                    <!-- <div class="boardItemLink"> -->
+                        <!-- <div class="boardItemFade"> -->
+                            <!-- <div class="boardItemHeader"></div> -->
+                            <!-- <div class="boardItemBody">Board List1</div> -->
+                            <!-- <div class="boardItemGraphContainer"> -->
+                                <!-- <div class="boardItemGraph"></div> -->
+                                <!-- <div class="boardItemGraph"></div> -->
+                                <!-- <div class="boardItemGraph"></div> -->
+                                <!-- <div class="boardItemGraphFrame"></div> -->
+                                <!-- <div class="boardItemGraphFrame"></div> -->
+                                <!-- <div class="boardItemGraphFrame"></div> -->
+                            <!-- </div> -->
+                            <!-- <div class="boardItemGraphSeparater"></div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            </div>
+
+            <p class="boardListHeader">Personal</p>
+            <div class="boardList" id="personalBoardList">
+            </div>
+
+
+            <!-- <input id="debug" type="button" name="debug" value="debug"></input> -->
+        </div>
+
+
+        <!-- tabpage2 [add, page clip] -->
+        <div class="tabpage" id="tabpage-add">
+            <div class="row top">
+                <div class="col1"></div>
+                <div class="col2">
+                    <div>
+                        <div id="topsideButtonWrap">
+                            <img id="button-enterCurrPage" src="../images/document2_16.png" width="16"
+                                title="Enter current web page title and url">
+                            <img id="button-viewOption" src="../images/chevron_down_round.png" width="19">
+                        </div>
+                    </div>
+                    <div id="viewOptions">
+                        <input type="checkbox" checked="true" data-target="description">Description</input></br>
+                        <input type="checkbox" checked="true" data-target="position">Position</input></br>
+                        <input type="checkbox" checked="true" data-target="label">Label</input></br>
+                        <!-- <input type="checkbox" checked="true" data-target="file">File</input> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row top">
+                <div class="col1">Card Title</div>
+                <div class="col2">
+                    <textarea id="textarea-cardTitle" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="row" id="row-description">
+                <div class="col1">Description</div>
+                <div class="col2">
+                    <textarea id="textarea-description" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col1">Board</div>
+                <div class="col2">
+                    <select id="selectbox-board"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col1">List</div>
+                <div class="col2">
+                    <select id="selectbox-list"></select>
+                </div>
+            </div>
+
+
+            <!-- optional -->
+            <div class="row-separater"></div>
+
+            <div class="row" id="row-position">
+                <div class="col1">Position</div>
+                <div class="col2">
+                    <select id="selectbox-position">
+                        <option value="top">Top</option>
+                        <option value="bottom">Bottom</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="row-label">
+                <div class="col1">Label</div>
+                <div class="col2">
+                    <select title="or press 0-9 key" id="selectbox-label">
+                        <option value="bottom">Select Labels...</option>
+                    </select>
+                    <div id="labelbox">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row" id="row-file"> -->
+                <!-- <div class="col1">File</div> -->
+                <!-- <div id="fileDropArea">Drop Here</div> -->
+                <!-- <div> -->
+                    <!-- <input id="fileBrowseButton" type="button" value="Browse.."></input></br> -->
+                    <!-- <input id="pageClipButton" type="button" value="Clip.."></input> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <div class="row">
+                <div class="col1"></div>
+                <div class="col2">
+                    <div id="addButtonWrap">
+                        <input id="addButton" type="button" title="Ctrl + Enter" value="Add"></input>
+                        <p id="addButton-status"></p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- end of tabpage2 [add, page clip] -->
+        </div>
+
+        <!-- dummy -->
+        <div class="tabpage">
+        
+        </div>
+    </div>
+
+    <script src="../lib/jquery-3.2.1.min.js"></script>
+    <script src="util.js"></script>
+    <script src="trelloApi.js"></script>
+    <script src="boardTab.js"></script>
+    <script src="additionTab.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>

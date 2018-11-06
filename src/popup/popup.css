@@ -1,0 +1,358 @@
+
+/* body */
+body{
+    font-size: 75%;
+    margin: 0px;
+}
+
+/* inherit font */
+button, input, select, textarea {
+    font-family : inherit;
+}
+
+/* tab */
+#tabcontrol {
+    padding: 8px 10px 0px 10px;
+    z-index:1;
+}
+
+#tabcontrolLine{
+   border-style: solid;
+   border-width: 1px 0px 0px 0px;
+   margin: -1px 0 0 0;
+   z-index: 0;
+}
+
+#tabcontrol .tabcontrolItem {
+    display: inline-block;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-radius: 4px 4px 0 0;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    -webkit-user-select: none;
+    color: black;
+    background: #fff;
+    font-weight: bold;
+    width:55px;
+}
+
+#tabcontrol .tabcontrolItem:hover{
+   filter: brightness(95%);
+   cursor: pointer;
+}
+
+#tabcontrol .selected{
+}
+
+#tabcontrol .selected:hover{
+    filter: none;
+}
+
+/* tab body */
+#tabbody {
+   width: 320px;   
+   min-height: 600px;
+   padding: 0 8px 8px 8px;
+}
+
+
+/* tab page */
+.tabpage{
+    display: none;
+}
+
+.tabpage.selected{
+    display: block;
+}
+
+
+
+/* ---------------------------------------------------- */
+/* tabpage1 Board */
+
+.boardListHeader {
+	font-weight: bold;
+    margin : 12px 0 6px 0;
+}
+
+/* board item */
+.boardItem {
+    overflow: hidden;
+    position: relative;
+    margin: 4px 0px 0px 0px;
+    background-color: #D29034;
+	border-radius: 4px;
+}
+
+.boardItemLink{
+}
+
+.boardItemFade{
+    background: hsla(0,0%,100%,.88);
+	height: 36px;
+}
+
+.boardItemFade:hover{
+    background: hsla(0,0%,100%,.77);
+    /* cursor: pointer; */
+	height: 36px;
+}
+
+.boardItemFade:hover > div{
+    color: #181818;
+}
+
+.boardItem .boardItemHeader{
+    float: left;   
+    background-color: #D29034;
+	border-radius: 4px 0px 0px 4px;
+    opacity: .7;
+    width: 12%;
+	height: 36px;
+}
+
+.boardItem .boardItemHeader:hover{
+}
+
+.boardItem .boardItemBody{
+	font-weight: 720;
+    float: left;
+    line-height: 36px;
+    vertical-align: center;
+    color: #444;
+    text-indent: 1em;
+    width: 88%;
+	height: 36px;
+}
+
+.boardItem .boardItemGraphContainer{
+    background-color: transparent;
+    /* background-color: #fff; */
+    /* opacity: .7; */
+    position: absolute;
+    line-height: 36px;
+    vertical-align: bottom;
+    right: 0px;
+    bottom: 0px;
+	height: 36px;
+}
+
+.boardItem .boardItemGraphContainer:hover{
+    cursor: crosshair;
+}
+
+
+.boardItem .boardItemGraph{
+    background-color: #ccc;
+    opacity: .6;
+    border-color: #000;
+    position: absolute;
+    line-height: 36px;
+    vertical-align: bottom;
+    bottom: 0px;
+	height: 0px;
+    transition-property: height;
+    transition-duration: 500ms;
+    transition-timing-function:linear;
+    transition-delay: 0s;
+}
+
+.boardItem .boardItemGraphFrame{
+    /* background-color: #FFF; */
+    /* opacity: .4; */
+    background-color: transparent;
+    border-color: #000;
+    position: absolute;
+    line-height: 36px;
+    vertical-align: bottom;
+    right: 0px;
+    width: 8px;
+	height: 36px;
+}
+
+.boardItem .boardItemGraphFrame:hover{
+    background-color: #444;
+    opacity: .2;
+}
+
+.boardItem .boardItemGraphSeparater{
+    background-color: #ccc;
+    opacity: .2;
+    position: absolute;
+    bottom: 0px;
+    right: 35px;
+	height: 36px;
+    width: 1px;
+}
+
+
+
+/* ---------------------------------------------------- */
+/* tabpage2 Add */
+
+#tabpage-add {
+    /* padding: 14px 0 0 0;    */
+}
+
+#tabpage-add .row{
+    margin: 10px 0;   
+    display: table;
+}
+
+#tabpage-add .row.top{
+    margin: 0;   
+}
+
+#tabpage-add #row-file{
+    margin: 14px 0;   
+}
+
+#tabpage-add .row-separater{
+    height: 2px;
+}
+
+#tabpage-add .row>div{
+    display: table-cell;
+}
+
+#tabpage-add .col1{
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    width: 65px;
+}
+
+#tabpage-add .col2{
+    width: 240px;
+}
+
+#tabpage-add .col2 .right{
+    text-align: right;
+}
+
+#topsideButtonWrap {
+    position: relative;
+    height: 25px;
+}
+
+#button-enterCurrPage{
+    position: absolute;
+    padding: 0;
+    right: 24px;
+    bottom: 5px;
+}
+
+#button-enterCurrPage:hover{
+    filter: brightness(120%);
+    cursor: pointer;
+}
+
+#button-viewOption{
+    position: absolute;
+    right: 0px;
+    bottom: 3px;
+    /* padding: 3px 0 0 0; */
+    opacity: .6;
+}
+
+#button-viewOption:hover{
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+#viewOptions{
+    padding: 0 0 8px 150px;
+    display: none;
+}
+
+#viewOptions input{
+}
+
+#tabpage-add textarea{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    resize: vertical;
+    width: 98%;
+}
+
+#tabpage-add select{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 120%;
+    width: 100%;
+    padding: 6px 3px;
+}
+
+/* #selectbox-label option:hover{ */
+   /* filter: brightness(75%); */
+   /* background-color : #fff; */
+/* } */
+
+#labelbox {
+    margin: 4px 0 0 0;   
+}
+
+#labelbox span{
+    display : inline-block;
+    background : #00e;
+    color : #fff;
+    margin : 1px 2px;
+    padding : 1px 3px;
+    border-radius: 3px;
+    font-weight: bolder;
+    font-size: 90%;
+    min-width: 30px;
+    text-align: center;
+    -webkit-user-select: none;
+}
+
+#labelbox span:hover{
+    cursor : pointer;
+}
+
+#fileDropArea{
+    background: #ddd;
+    border-color: #111;
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#fileBrowseButton,#pageClipButton{
+    background: #eee;
+    width: 65px;
+    margin: 5px;
+}
+
+#addButtonWrap{
+    position: relative;
+    height: 70px;
+}
+#addButton{
+    /* margin: 26px 0 0 0; */
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+    /* background: #E8EEF7; */
+    /* border-color: #D3DFF0; */
+    font-size: 140%;
+    border-radius: 3px;
+    padding: 5px 20px;
+    width: 120px;
+}
+#addButton-status{
+    position: absolute;
+    right: 130px;
+    bottom: 0px;
+
+
+
+
