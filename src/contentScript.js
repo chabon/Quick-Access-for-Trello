@@ -6,9 +6,7 @@ if (location.href == "https://trello.com/1/token/approve") {
     var element = document.getElementsByTagName("pre");
     var token = element[0].innerText.replace(/\s+/g, "");
 
+
     // send token to background.js
-    chrome.runtime.sendMessage({
-            name: "authorized",
-            token: token
-        }, function(response) {});
+    chrome.runtime.sendMessage({ name: "authorized", token: token });
 }

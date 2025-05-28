@@ -336,7 +336,8 @@ AdditionTab.onKeypressed = function(e){
 $(function(){
     // enter current page info button 
     $('#button-enterCurrPage').on('click', function(){
-        chrome.tabs.getSelected(window.id, function (tab) {
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            const tab = tabs[0];
             $('#textarea-cardTitle').val(tab.title);
             $('#textarea-description').val(tab.url);
         });

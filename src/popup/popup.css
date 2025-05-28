@@ -30,7 +30,7 @@ button, input, select, textarea {
     border-radius: 4px 4px 0 0;
     padding: 0.5em 1em;
     text-decoration: none;
-    -webkit-user-select: none;
+    user-select: none;
     color: black;
     background: #fff;
     font-weight: bold;
@@ -186,6 +186,9 @@ button, input, select, textarea {
     width: 1px;
 }
 
+#logout-link {
+    color:#444;
+}
 
 
 /* ---------------------------------------------------- */
@@ -352,7 +355,7 @@ button, input, select, textarea {
     position: absolute;
     right: 130px;
     bottom: 0px;
-
+}
 
 
 

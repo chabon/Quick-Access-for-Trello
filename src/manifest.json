@@ -2,14 +2,11 @@
 {
   "name": "Quick Access for Trello",
   "version": "1.0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "__MSG_description__",
   "background":{
-  	"scripts": [ 
-    "lib/jquery-3.2.1.min.js",
-  	"background.js"
-  	],
-  	"persistent": false
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [ {
     "js": [ "contentScript.js" ],
@@ -22,12 +19,16 @@
     "32" : "images/AppIcon_32.png",
     "48" : "images/AppIcon_48.png"
   },
-  "browser_action": {
+  "action": {
         "default_icon": "images/AppIcon_19.png",
         "default_popup": "popup/popup.html"
    },
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
-  "default_locale": "en"
+  "default_locale": "en",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }

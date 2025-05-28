@@ -1,27 +1,20 @@
 
-// for release
-window.console = {};
-window.console.log = function(i){return;};
-window.console.time = function(i){return;};
-window.console.timeEnd = function(i){return;};
-
 var Popup = {
     tabPageColor : ["#ffffff", "#f4f4ff", "#f4fff4"],
     tabCtrlBorderColor : "#ccc",
 };
 
 
-Popup.init = function(){
+Popup.init = async function(){
     // has not token
-    if(!localStorage.token){
-        chrome.runtime.getBackgroundPage(function(bg){
-            bg.Ext.openAuthorizeTab();
-        });
+    const token = (await chrome.storage.local.get("token"))["token"];
+    if(!token){
+        chrome.runtime.sendMessage({ name:"authorize" });
         return;
     }
 
     // has token
-    TrelloApi.token = localStorage.token;
+    TrelloApi.token = token;
 
     // has cache?
     BoardTab.cache.boards = Util.getSetting("boards", [], true);
@@ -38,7 +31,7 @@ Popup.init = function(){
     $(".tabcontrolItem").click(function(){
         let nextIndex = $(".tabcontrolItem").index(this);
         Popup.changeTabPage(nextIndex);
-        localStorage.lastTabIndex = nextIndex;
+        localStorage.setItem("lastTabIndex", nextIndex);
     });
 
     // keypress event
@@ -47,6 +40,19 @@ Popup.init = function(){
             case 0: BoardTab.onKeypressed(e); break;
             case 1: AdditionTab.onKeypressed(e); break;
         }
+    });
+
+    // on popup page closing, save UI
+    document.addEventListener('visibilitychange', function(){
+        AdditionTab.saveView();
+    }, false);
+
+    // logout link click event
+    $('#logout-link').on('click',async function(e) {
+        e.preventDefault(); // prevent reload
+        if (confirm("Are you sure you want to log out?")) {
+            await Popup.logout();
+        } 
     });
 
     // 
@@ -62,6 +68,7 @@ Popup.init = function(){
 Popup.getCurrentTabIndex = function(){
     return $(".tabcontrolItem").index( $(".tabcontrolItem.selected") );
 }
+
 
 Popup.getCurrentTabName = function(){
     switch( Popup.getCurrentTabIndex() ){
@@ -113,18 +120,28 @@ Popup.changeTabPage = function(nextIdx){
 }
 
 
+Popup.logout = async function(){
+    // remove token
+    await chrome.storage.local.remove("token");
+    // remove cache
+    localStorage.removeItem("boards");
+    localStorage.removeItem("lastTabIndex");
+    localStorage.removeItem("add-prevCardTitle");
+    localStorage.removeItem("add-prevDescription");
+    localStorage.removeItem("add-prevBoardId");
+    localStorage.removeItem("add-prevListId");
+    localStorage.removeItem("add-prevPosition");
+    localStorage.removeItem("add-prevLabelBoxInnerHtml");
+    // close popup page
+    window.close();
+}
 
 // debug
 $('#debug').click(function(e) {
-    chrome.runtime.getBackgroundPage(function(bg){
-        TrelloApi.getBoardInfo().then(function(data){
-        });
-    });
+
 });
 
 
 
 // entry point
 Popup.init();
-chrome.runtime.connect({name: "popup"});
-
